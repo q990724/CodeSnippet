@@ -1,47 +1,47 @@
 {
-	"name": "electron-vue-vite",
-	"version": "2.0.0",
-	"main": "dist-electron/main/index.js",
-	"description": "Really simple Electron + Vue + Vite boilerplate.",
-	"author": "草鞋没号 <308487730@qq.com>",
-	"license": "MIT",
-	"private": true,
-	"scripts": {
-		"dev": "vite",
-		"build": "vue-tsc --noEmit && vite build && electron-builder"
-	},
-	"engines": {
-		"node": "^14.18.0 || >=16.0.0"
-	},
-	"dependencies": {
-		"element-plus": "^2.2.27",
-		"sass": "^1.57.1",
-		"vue-router": "4"
-	},
-	"devDependencies": {
-		"@vitejs/plugin-vue": "^4.0.0",
-		"autoprefixer": "^10.4.13",
-		"electron": "^22.0.0",
-		"electron-builder": "^23.3.3",
-		"postcss": "^8.4.20",
-		"tailwindcss": "^3.2.4",
-		"typescript": "^4.8.4",
-		"vite": "^4.0.0",
-		"vite-plugin-electron": "^0.11.1",
-		"vite-plugin-electron-renderer": "^0.11.3",
-		"vue": "^3.2.40",
-		"vue-tsc": "^1.0.9"
-	},
-	"debug": {
-		"env": {
-			"VITE_DEV_SERVER_URL": "http://127.0.0.1:3344"
-		}
-	},
-	"keywords": [
-		"electron",
-		"rollup",
-		"vite",
-		"vue3",
-		"vue"
-	]
+    "name": "code-snippet",
+    "version": "1.0.0",
+    "main": "dist-electron/main/index.js",
+    "description": "Really simple Electron + Vue + Vite boilerplate.",
+    "author": "小浣熊爱吃奥利奥 <q664625200@163.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build && electron-builder"
+    },
+    "engines": {
+        "node": "^14.18.0 || >=16.0.0"
+    },
+    "dependencies": {
+        "element-plus": "^2.2.27",
+        "sass": "^1.57.1",
+        "vue-router": "4"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^4.0.0",
+        "autoprefixer": "^10.4.13",
+        "electron": "^22.0.0",
+        "electron-builder": "^23.3.3",
+        "postcss": "^8.4.20",
+        "tailwindcss": "^3.2.4",
+        "typescript": "^4.8.4",
+        "vite": "^4.0.0",
+        "vite-plugin-electron": "^0.11.1",
+        "vite-plugin-electron-renderer": "^0.11.3",
+        "vue": "^3.2.40",
+        "vue-tsc": "^1.0.9"
+    },
+    "debug": {
+        "env": {
+            "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344"
+        }
+    },
+    "keywords": [
+        "electron",
+        "rollup",
+        "vite",
+        "vue3",
+        "vue"
+    ]
 }
