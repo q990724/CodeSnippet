@@ -1,0 +1,47 @@
+*::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 5px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+}
+
+*::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+    display: none;
+}
+
+*::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    border: 1px solid rgba(0, 0, 0, 0);
+    height: 6px;
+    border-radius: 25px;
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0.30);
+}
+
+//滚动条里面的小方块，能向上向下移动(或向左向右移动) 指上去的时候显示border和改变颜色造成视觉上的加粗变色
+*::-webkit-scrollbar-thumb:hover{
+    border: 3px solid rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.70);
+}
+
+// *::-webkit-scrollbar-thumb {
+//     /*滚动条里面小方块*/
+//     border-radius: 10px;
+//     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+//     background: #535353;
+// }
+
+// *::-webkit-scrollbar-thumb:hover {
+//     border-width: 10px;
+// }
+
+// *::-webkit-scrollbar-track {
+//     /*滚动条里面轨道*/
+//     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+//     border-radius: 10px;
+//     background: #ededed;
+// }
