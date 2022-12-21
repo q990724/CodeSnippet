@@ -40,6 +40,10 @@ const indexHtml = join(process.env.DIST, "index.html");
 
 async function createWindow() {
     win = new BrowserWindow({
+        width: 900,
+        height: 600,
+        minWidth: 900,
+        minHeight: 600,
         title: "Main window",
         icon: join(process.env.PUBLIC, "favicon.ico"),
         webPreferences: {
@@ -56,8 +60,7 @@ async function createWindow() {
         // electron-vite-vue#298
         win.loadURL(url);
         // Open devTool if the app is not packaged
-        win.webContents.openDevTools();
-        win.show();
+        // win.webContents.openDevTools();
     } else {
         win.loadFile(indexHtml);
     }

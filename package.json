@@ -6,6 +6,9 @@
     "author": "小浣熊爱吃奥利奥 <q664625200@163.com>",
     "license": "MIT",
     "private": true,
+    "repository": {
+        "url": "https://github.com/q990724/CodeSnippet"
+    },
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build && electron-builder"
@@ -14,6 +17,7 @@
         "node": "^14.18.0 || >=16.0.0"
     },
     "dependencies": {
+        "@element-plus/icons-vue": "^2.0.10",
         "element-plus": "^2.2.27",
         "sass": "^1.57.1",
         "vue-router": "4"
