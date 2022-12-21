@@ -19,10 +19,12 @@
     "dependencies": {
         "@element-plus/icons-vue": "^2.0.10",
         "element-plus": "^2.2.27",
+        "highlight.js": "^11.7.0",
         "sass": "^1.57.1",
         "vue-router": "4"
     },
     "devDependencies": {
+        "@types/highlight.js": "^10.1.0",
         "@vitejs/plugin-vue": "^4.0.0",
         "autoprefixer": "^10.4.13",
         "electron": "^22.0.0",
