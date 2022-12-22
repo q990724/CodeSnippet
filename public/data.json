@@ -1,0 +1,156 @@
+[
+    {
+        "copy": 0,
+        "tags": ["ClassValidator", "Nest.js"],
+        "key": "c47a10bcb37c7e1e16c6825e8e8cd59a3c7d965e",
+        "createAt": 1669442039087,
+        "updateAt": 1669442222145,
+        "name": "自定义验证类",
+        "lang": "TypeScript",
+        "value": "import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator';\n\n@ValidatorConstraint({ name: 'customText', async: false })\nexport class CustomTextLength implements ValidatorConstraintInterface {\n  validate(text: string, args: ValidationArguments) {\n    return text.length > 1 && text.length < 10; // for async validations you must return a Promise<boolean> here\n  }\n\n  defaultMessage(args: ValidationArguments) {\n    // here you can provide default error message if validation failed\n    return 'Text ($value) is too short or too long!';\n  }\n}",
+        "description": ""
+    },
+    {
+        "copy": 6,
+        "tags": ["ClassValidator", "Nest.js"],
+        "key": "61298bc78d1a1556e150fb3663d61822b60f1dea",
+        "createAt": 1669442263689,
+        "updateAt": 1670399055804,
+        "name": "自定义验证装饰器",
+        "lang": "TypeScript",
+        "value": "import { registerDecorator, ValidationOptions, ValidationArguments } from 'class-validator';\n\nexport function IsLongerThan(property: string, validationOptions?: ValidationOptions) {\n  return function (object: Object, propertyName: string) {\n    registerDecorator({\n      name: 'isLongerThan',\n      target: object.constructor,\n      propertyName: propertyName,\n      constraints: [property],\n      options: validationOptions,\n      validator: {\n        validate(value: any, args: ValidationArguments) {\n          const [relatedPropertyName] = args.constraints;\n          const relatedValue = (args.object as any)[relatedPropertyName];\n          return typeof value === 'string' && typeof relatedValue === 'string' && value.length > relatedValue.length; // you can return a Promise<boolean> here as well, if you want to make async validation\n        },\n      },\n    });\n  };\n}",
+        "description": ""
+    },
+    {
+        "copy": 3,
+        "tags": ["Nest.js", "NPM"],
+        "key": "19df8a5c6e45b0592f46e4901aca080288a73f67",
+        "createAt": 1669443352400,
+        "updateAt": 1670385677059,
+        "name": "NestJS安装运行依赖",
+        "lang": "Shell",
+        "value": "npm i prisma-binding @prisma/client mockjs @nestjs/config class-validator class-transformer argon2 --build-from-source @nestjs/passport passport passport-local @nestjs/jwt passport-jwt lodash multer dayjs express redis @nestjs/throttler",
+        "description": ""
+    },
+    {
+        "copy": 2,
+        "tags": ["Nest.js", "NPM"],
+        "key": "10e78defbd4c8d66abf945f44e91eaa8aba9cab2",
+        "createAt": 1669443397896,
+        "updateAt": 1669799380703,
+        "name": "NestJS安装编译时依赖",
+        "lang": "Shell",
+        "value": "npm i -D prisma typescript @types/node @types/mockjs @nestjs/mapped-types @types/passport-local @types/passport-jwt @types/express @types/lodash @types/multer @types/node",
+        "description": ""
+    },
+    {
+        "copy": 0,
+        "tags": ["Prisma", "NPM"],
+        "key": "5fe44b15299d102ec391e8a9fae701eea49b1435",
+        "createAt": 1669443474336,
+        "updateAt": 1669443474336,
+        "name": "Prisma初始化",
+        "lang": "Shell",
+        "value": "npx prisma init",
+        "description": ""
+    },
+    {
+        "copy": 2,
+        "tags": ["NPM", "Prisma"],
+        "key": "7f3bfe5844daa492f70d6ca7cba07d7ed2368c96",
+        "createAt": 1669443529311,
+        "updateAt": 1670390198257,
+        "name": "Prisma逆向生成模型文件",
+        "lang": "Shell",
+        "value": "npx prisma db pull ",
+        "description": ""
+    },
+    {
+        "copy": 5,
+        "tags": ["NPM", "Prisma"],
+        "key": "50a636c5f3b12cd447cf4d7566948e13eabf4ba0",
+        "createAt": 1669443582064,
+        "updateAt": 1669800124784,
+        "name": "Prisma根据模型文件迁移到数据库",
+        "lang": "Shell",
+        "value": "npx prisma migrate dev",
+        "description": ""
+    },
+    {
+        "copy": 0,
+        "tags": ["NPM", "Prisma"],
+        "key": "3232f2fe99f0601eb2af112043920880a4374913",
+        "createAt": 1669443609672,
+        "updateAt": 1669443626179,
+        "name": "Prisma重置数据库",
+        "lang": "Shell",
+        "value": "npm prisma migrate reset",
+        "description": "删除数据库\n创建同名数据库\n执行所有迁移文件\n运行 seed 数据填充"
+    },
+    {
+        "copy": 0,
+        "tags": ["Prisma", "NPM"],
+        "key": "dbddd953183e4fb7f8a3ffd8dcbf9ff13cd65ec5",
+        "createAt": 1669443753224,
+        "updateAt": 1669443753224,
+        "name": "Prisma执行seed",
+        "lang": "Shell",
+        "value": "npx prisma db seed",
+        "description": "首先在package.json中定义命令  \"prisma\": { \"seed\": \"ts-node prisma/seed.ts\" }\n然后你需要创建prisma/seeds目录 ，该目录用于定义数据填充文件"
+    },
+    {
+        "copy": 3,
+        "tags": ["Nest.js"],
+        "key": "9161dd762b99321793216ddc7194e3ab73b428aa",
+        "createAt": 1669610949716,
+        "updateAt": 1669699120980,
+        "name": "JWT验证策略",
+        "lang": "TypeScript",
+        "value": "import { PrismaService } from \"../../prisma/prisma.service\";\nimport { ConfigService } from \"@nestjs/config\";\nimport { ExtractJwt, Strategy } from \"passport-jwt\";\nimport { PassportStrategy } from \"@nestjs/passport\";\nimport { Injectable } from \"@nestjs/common\";\n\n@Injectable()\nexport class JwtStrategy extends PassportStrategy(Strategy, \"jwt\") {\n    constructor(readonly configService: ConfigService, private readonly prismaService: PrismaService) {\n        super({\n            //解析用户提交的header中的Bearer Token数据\n            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),\n            //加密码的 secret\n            secretOrKey: configService.get(\"TOKEN_SECRET\"),\n        });\n    }\n\n    //验证通过后获取用户资料\n    async validate(payload: any) {\n        return this.prismaService.user.findUnique({\n            where: { id: payload.userId },\n        });\n    }\n}\n",
+        "description": ""
+    },
+    {
+        "copy": 2,
+        "tags": ["Nest.js"],
+        "key": "5b4264db81e881e954a3a98c7c1cf7d61818c0f4",
+        "createAt": 1669612934031,
+        "updateAt": 1669618211941,
+        "name": "装饰器聚合",
+        "lang": "TypeScript",
+        "value": "import { applyDecorators, UseGuards } from '@nestjs/common'\nimport { AuthGuard } from '@nestjs/passport'\n\nexport function Auth() {\n  return applyDecorators(UseGuards(AuthGuard('jwt')))\n}",
+        "description": ""
+    },
+    {
+        "copy": 1,
+        "tags": ["Nest.js"],
+        "key": "dd624f5275f8d7f24765ee48125c3b48160fe994",
+        "createAt": 1669612981943,
+        "updateAt": 1669613029507,
+        "name": "自定义属性装饰器",
+        "lang": "TypeScript",
+        "value": "import { createParamDecorator, ExecutionContext } from '@nestjs/common';\n\nexport const User = createParamDecorator(\n  (data: unknown, ctx: ExecutionContext) => {\n    const request = ctx.switchToHttp().getRequest();\n    return request.user;\n  },\n);",
+        "description": ""
+    },
+    {
+        "copy": 4,
+        "tags": ["Nest.js"],
+        "key": "2199e1a3949ebbea66a3c1325fb21ef1731fbcee",
+        "createAt": 1669615785670,
+        "updateAt": 1670466166884,
+        "name": "定义拦截器",
+        "lang": "TypeScript",
+        "value": "import { CallHandler, ExecutionContext, Injectable, Logger, NestInterceptor } from '@nestjs/common'\nimport { Request } from 'express'\nimport { map } from 'rxjs/operators'\n\n@Injectable()\nexport class TransformInterceptor implements NestInterceptor {\n  intercept(context: ExecutionContext, next: CallHandler) {\n    console.log('拦截器前')\n    const request = context.switchToHttp().getRequest() as Request\n    const startTime = Date.now()\n    return next.handle().pipe(\n      map((data) => {\n        const endTime = Date.now()\n        new Logger().log(`TIME:${endTime - startTime}\\tURL:${request.path}\\tMETHOD:${request.method}`)\n        return {\n          data,\n        }\n      }),\n    )\n  }\n}",
+        "description": ""
+    },
+    {
+        "copy": 4,
+        "tags": ["Nest.js"],
+        "key": "2199e1a3949ebbea66a3c1325fb21ef1731fbcaa",
+        "createAt": 1669615785670,
+        "updateAt": 1670466166884,
+        "name": "测试Java",
+        "lang": "Sql",
+        "value": "select * from emp;",
+        "description": ""
+    }
+]

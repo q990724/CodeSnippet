@@ -28,6 +28,10 @@
     background-color: rgba(0, 0, 0, 0.70);
 }
 
+* {
+    user-select: none;
+}
+
 // *::-webkit-scrollbar-thumb {
 //     /*滚动条里面小方块*/
 //     border-radius: 10px;

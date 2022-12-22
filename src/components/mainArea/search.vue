@@ -6,7 +6,7 @@
             <el-icon :size="20"><Search /></el-icon>
         </span>
         <input placeholder="keyword" type="text" class="flex-1 outline-none box-border px-2 py-1 bg-transparent placeholder:text-gray-500" />
-        <div class="create flex justify-center items-center px-2 bg-zgh-shubihong text-white cursor-pointer">
+        <div class="create flex justify-center items-center px-2 bg-slate-600 text-white cursor-pointer">
             <el-icon><Plus class="font-bold" /></el-icon>
             <span class="ml-1 font-bold">Create</span>
         </div>

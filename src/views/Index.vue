@@ -9,11 +9,15 @@ import mainArea from "../components/mainArea/mainArea.vue";
             <div class="sidebar w-[300px] bg-zgh-yunshuilan border-r-2 border-slate-600">
                 <sidebarVue></sidebarVue>
             </div>
-            <div class="flex-1 bg-zgh-dalishihui">
+            <div class="flex-1 bg-zgh-dalishihui main">
                 <mainArea></mainArea>
             </div>
         </div>
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.main {
+    width: calc(100vw - 300px);
+}
+</style>
